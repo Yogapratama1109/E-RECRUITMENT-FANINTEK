@@ -23,11 +23,6 @@ function FormExpertise() {
             
             <AddRemoveEducation />
 
-            <div className="d-flex justify-content-end my-4">
-                <Button variant="primary" type="submit" className="mt-3 Primary-btn">
-                    Submit
-                </Button>
-            </div>
         </div>
     )
 }

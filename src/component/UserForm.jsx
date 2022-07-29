@@ -18,6 +18,8 @@ function UserForm() {
   const onSubmit = data => console.log(data);
   console.log(errors);
 
+  
+
   return (
     <div>
       <h4 className="text-center mb-4">Personal Detail</h4>
@@ -130,11 +132,6 @@ function UserForm() {
                 {errors.agama && <span className="text-danger">This field is required</span>}
               </Form.Group>
 
-              <div className="d-flex justify-content-end my-4">
-                <Button variant="primary" type="submit" className="mt-3 Primary-btn">
-                  Submit
-                </Button>
-              </div>
             </div>
           </Col>
         </Row>

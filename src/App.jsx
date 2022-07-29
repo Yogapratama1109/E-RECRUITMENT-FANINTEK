@@ -4,7 +4,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
-// import MultiForm from "./component/MultiForm"
 import UserFormm from './component/UserForm'
 import FormLanguage from './component/FormLanguage'
 import FormExpertise from "./component/FormExpertise"
@@ -16,6 +15,45 @@ import FormAplication from './component/FormAplication'
 import FormFamily from './component/FormFamily'
 
 function App() {
+
+  const [page, setPage] = useState(0);
+
+  function handleSubmitt() {
+    setPage(page + 1);
+  }
+
+  const formStep = () => {
+    switch (page) {
+      case 0:
+        return <UserFormm />;
+      case 1:
+        return <FormLanguage />;
+      case 2:
+        return (
+          <FormExpertise />
+        );
+      case 3:
+        return (
+          <FormEmployment />
+        );
+      case 4:
+        return (
+          <FormEducation />
+        );
+      case 5:
+        return <FormContact />;
+      case 6:
+        return <FormBank />;
+      case 7:
+        return (
+          <FormAplication />
+        );
+      case 8:
+        return <FormFamily />;
+      default:
+        return <UserFormm />;
+    }
+  };
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
@@ -33,6 +71,8 @@ function App() {
         <div className="Form-content">
           <Form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column">
 
+            {formStep()}
+
             {/* <UserFormm /> */}
             {/* <FormLanguage /> */}
             {/* <FormExpertise /> */}
@@ -41,7 +81,23 @@ function App() {
             {/* <FormContact /> */}
             {/* <FormBank /> */}
             {/* <FormAplication /> */}
-            <FormFamily />
+            {/* <FormFamily /> */}
+
+            <div className="d-flex justify-content-end">
+
+              {page > 0 && (
+                <button
+                  onClick={() => setPage(page - 1)}
+                  className="btn btn-danger me-2"
+                >
+                  Back
+                </button>
+              )}
+
+              <Button onClick={handleSubmitt} variant="primary" className="Primary-btn">
+                {page !== 8 ? "Next" : "Submit"}
+              </Button>
+            </div>
 
           </Form>
         </div>

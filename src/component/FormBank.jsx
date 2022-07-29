@@ -33,11 +33,6 @@ function FormExpertise() {
                 <Form.Control type="text" placeholder="......." {...register("bank_book_name")} />
             </Form.Group>
 
-            <div className="d-flex justify-content-end my-4">
-                <Button variant="primary" type="submit" className="mt-3 Primary-btn">
-                    Submit
-                </Button>
-            </div>
         </div>
     )
 }
