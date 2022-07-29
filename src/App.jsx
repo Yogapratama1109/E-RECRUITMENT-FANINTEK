@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import './App.css'
 import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import { useForm } from 'react-hook-form'
+// import MultiForm from "./component/MultiForm"
+import UserFormm from './component/UserForm'
+import FormLanguage from './component/FormLanguage'
+import FormExpertise from "./component/FormExpertise"
+import FormEmployment from './component/FormEmployment'
+import FormEducation from './component/FormEducation'
+import FormContact from './component/FormContact'
+import FormBank from './component/FormBank'
+import FormAplication from './component/FormAplication'
+import FormFamily from './component/FormFamily'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  const [file, setFile] = useState();
-  function handleChange(e) {
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
+  console.log(errors);
 
   return (
     <div className="App">
@@ -20,106 +29,21 @@ function App() {
       <div className="Main-content container my-5">
         <div className="Title mb-5">
           <h3 className="text-center">Form Registrasi Karyawan</h3>
-          <h4 className="text-center">Personal Detail</h4>
         </div>
-        <div className="Form-content d-flex align-items-center">
+        <div className="Form-content">
+          <Form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column">
 
-          <div className="Image d-flex align-items-center flex-column">
-            <i>Foto Terbaru 4x6</i>
-            <div className="Upload d-flex flex-column justify-content-center align-items-center mt-2">
-              <div className="Content d-flex flex-column align-items-center justify-content-center">
-                <img className="image" src={file} />
-              </div>
-              <div className="Input-file">
-                <input type="file" id="actual-btn" onChange={handleChange} hidden />
-                <label for="actual-btn" className="Label-input">Upload Image</label>
-              </div>
-            </div>
+            {/* <UserFormm /> */}
+            {/* <FormLanguage /> */}
+            {/* <FormExpertise /> */}
+            {/* <FormEmployment /> */}
+            {/* <FormEducation /> */}
+            {/* <FormContact /> */}
+            {/* <FormBank /> */}
+            {/* <FormAplication /> */}
+            <FormFamily />
 
-          </div>
-          <div className="Form-content-body ms-0 ms-md-5">
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Nama</Form.Label>
-                <Form.Control type="text" placeholder="Masukan nama anda" />
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Jenis Kelamin</Form.Label>
-                <Form.Select>
-                  <option>Laki-laki</option>
-                  <option>Perempuan</option>
-                </Form.Select>
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Tempat Lahir</Form.Label>
-                <Form.Control type="text" placeholder="Masukan kota tempat lahir anda" />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Tanggal Lahir</Form.Label>
-                <Form.Control type="date" />
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Kewarganegaraan</Form.Label>
-                <Form.Select>
-                  <option>Indonesia</option>
-                  <option>Mayalsia</option>
-                  <option>Singapura</option>
-                </Form.Select>
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>No. KTP</Form.Label>
-                <Form.Control type="number" placeholder="39074" />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>No. NPWP</Form.Label>
-                <Form.Control type="number" placeholder="109900" />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>No. BPJS</Form.Label>
-                <Form.Control type="number" placeholder="78000" />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>No. BPJS Ketenagakerjaan</Form.Label>
-                <Form.Control type="number" placeholder="2300" />
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Status</Form.Label>
-                <Form.Select>
-                  <option>Belum Kawin</option>
-                  <option>Kawin, Belum punya anak</option>
-                  <option>Kawin, dengan anak 1</option>
-                </Form.Select>
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Agama</Form.Label>
-                <Form.Select>
-                  <option>Islam</option>
-                  <option>Khatolik</option>
-                  <option>Kristen</option>
-                  <option>Budha</option>
-                  <option>Hindu</option>
-                  <option>Lain-lain</option>
-                </Form.Select>
-              </Form.Group>
-
-              <div className="d-flex justify-content-end">
-                <Button variant="primary" type="submit" className="mt-3 Primary-btn">
-                  Submit
-                </Button>
-              </div>
-            </Form>
-          </div>
-
+          </Form>
         </div>
       </div>
     </div>
