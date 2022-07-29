@@ -4,15 +4,15 @@ import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
-import UserFormm from './component/UserForm'
-import FormLanguage from './component/FormLanguage'
-import FormExpertise from "./component/FormExpertise"
-import FormEmployment from './component/FormEmployment'
-import FormEducation from './component/FormEducation'
-import FormContact from './component/FormContact'
-import FormBank from './component/FormBank'
-import FormAplication from './component/FormAplication'
-import FormFamily from './component/FormFamily'
+import UserFormm from './pages/UserForm'
+import FormLanguage from './pages/FormLanguage'
+import FormExpertise from "./pages/FormExpertise"
+import FormEmployment from './pages/FormEmployment'
+import FormEducation from './pages/FormEducation'
+import FormContact from './pages/FormContact'
+import FormBank from './pages/FormBank'
+import FormAplication from './pages/FormAplication'
+import FormFamily from './pages/FormFamily'
 
 function App() {
 
