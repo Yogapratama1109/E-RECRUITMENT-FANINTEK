@@ -2,8 +2,8 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import AddRemoveLanguage from '../add-remove-input/AddRemoveLanguage'
-import AddRemoveSkill from '../add-remove-input/AddRemoveSkill'
+import AddRemoveLanguage from '../helpers/AddRemoveLanguage'
+import AddRemoveSkill from '../helpers/AddRemoveSkill'
 
 function FormLanguage() {
 

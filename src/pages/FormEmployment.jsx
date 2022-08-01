@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Button from 'react-bootstrap/Button'
-import AddRemoveEmployment from '../add-remove-input/AddRemoveEmployment'
+import AddRemoveEmployment from '../helpers/AddRemoveEmployment'
 
 function FormExpertise() {
 

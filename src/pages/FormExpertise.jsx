@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import AddRemoveExpertise from '../add-remove-input/AddRemoveExpertise'
+import AddRemoveExpertise from '../helpers/AddRemoveExpertise'
 
 function FormExpertise() {
 

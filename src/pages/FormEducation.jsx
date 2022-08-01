@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import AddRemoveEducation from '../add-remove-input/AddRemoveEducation'
+import AddRemoveEducation from '../helpers/AddRemoveEducation'
 
 function FormExpertise() {
 

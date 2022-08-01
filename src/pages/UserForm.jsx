@@ -43,7 +43,7 @@ function UserForm() {
             <div className="Form-content">
               <Form.Group className="mb-3" controlId="exampleForm.ControlInpu">
                 <Form.Label>Nama</Form.Label>
-                <Form.Control type="text" placeholder="full_name" {...register("full_name", { required: true })} />
+                <Form.Control type="text" placeholder="full_name" {...register("full_name", { required: true })} ref={reg()} />
                 {errors.full_name && <span className="text-danger">This field is required</span>}
               </Form.Group>
 

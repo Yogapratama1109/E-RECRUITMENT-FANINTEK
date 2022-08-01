@@ -22,42 +22,61 @@ function App() {
     setPage(page + 1);
   }
 
-  const formStep = () => {
-    switch (page) {
-      case 0:
-        return <UserFormm />;
-      case 1:
-        return <FormLanguage />;
-      case 2:
-        return (
-          <FormExpertise />
-        );
-      case 3:
-        return (
-          <FormEmployment />
-        );
-      case 4:
-        return (
-          <FormEducation />
-        );
-      case 5:
-        return <FormContact />;
-      case 6:
-        return <FormBank />;
-      case 7:
-        return (
-          <FormAplication />
-        );
-      case 8:
-        return <FormFamily />;
-      default:
-        return <UserFormm />;
+  const renderButton = () => {
+    if (page > 1) {
+      return undefined;
+    } else if (page === 1) {
+      return <Button variant="primary" type="submit" disabled={!isValid}>Submit</Button>
     }
-  };
+    else  {
+      return <Button onClick={handleSubmitt} variant="primary" className="Primary-btn" disabled={!isValid}>Next</Button>
+    }
+  }
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  // const formStep = () => {
+  //   switch (page) {
+  //     case 0:
+  //       return <UserFormm />;
+  //     case 1:
+  //       return <FormLanguage />;
+  //     case 2:
+  //       return (
+  //         <FormExpertise />
+  //       );
+  //     case 3:
+  //       return (
+  //         <FormEmployment />
+  //       );
+  //     case 4:
+  //       return (
+  //         <FormEducation />
+  //       );
+  //     case 5:
+  //       return <FormContact />;
+  //     case 6:
+  //       return <FormBank />;
+  //     case 7:
+  //       return (
+  //         <FormAplication />
+  //       );
+  //     case 8:
+  //       return <FormFamily />;
+  //     default:
+  //       return <UserFormm />;
+  //   }
+  // };
+
+  const completeFormStep = () => {
+    setPage(cur => cur + 1);
+  }
+
+  const { watch, register, handleSubmit, formState: { errors, isValid } } = useForm( { mode: "all" });
   console.log(errors);
+
+  const onSubmit = (values) => {
+    window.alert(JSON.stringify(values, null, 2));
+    completeFormStep();
+  }
 
   return (
     <div className="App">
@@ -71,17 +90,82 @@ function App() {
         <div className="Form-content">
           <Form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column">
 
-            {formStep()}
+            {/* {formStep()} */}
 
-            {/* <UserFormm /> */}
-            {/* <FormLanguage /> */}
-            {/* <FormExpertise /> */}
-            {/* <FormEmployment /> */}
-            {/* <FormEducation /> */}
-            {/* <FormContact /> */}
-            {/* <FormBank /> */}
-            {/* <FormAplication /> */}
-            {/* <FormFamily /> */}
+            {page >= 0 && (
+              <section className={page === 0 ? "d-block" : "d-none"}>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInpu">
+                  <Form.Label>Nama</Form.Label>
+                  <Form.Control type="text" placeholder="full_name" {...register("full_name", { required: true })} />
+                  {errors.full_name && <span className="text-danger">This field is required</span>}
+                </Form.Group>
+              </section>
+            )}
+
+            {page >= 1 && (
+              <section className={page === 1 ? "d-block" : "d-none"}>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Jenis Kelamin</Form.Label>
+                <Form.Select {...register("gender", { required: true, valueAsNumber: true })}>
+                  <option value="">~</option>
+                  <option value="1">Laki-laki</option>
+                  <option value="2">Perempuan</option>
+                </Form.Select>
+                {errors.gender && <span className="text-danger">This field is required</span>}
+              </Form.Group>
+              </section>
+            )}
+
+            {/* {page === 2 && (
+              <section>
+                <FormExpertise />
+              </section>
+            )}
+
+            {page === 3 && (
+              <section>
+                <FormEmployment />
+              </section>
+            )}
+
+            {page === 4 && (
+              <section>
+                <FormEducation />
+              </section>
+            )}
+
+            {page === 5 && (
+              <section>
+                <FormContact />
+              </section>
+            )}
+
+            {page === 6 && (
+              <section>
+                <FormBank />
+              </section>
+            )}
+
+            {page === 7 && (
+              <section>
+                <FormAplication />
+              </section>
+            )}
+
+            {page === 8 && (
+              <section>
+                <FormFamily />
+              </section>
+            )} */}
+
+            {page === 2 && (
+              <section>
+                <h2>Congsatulations</h2>
+              </section>
+            )}
+            <pre>
+                {JSON.stringify(watch(), null, 2)}
+              </pre>
 
             <div className="d-flex justify-content-end">
 
@@ -94,9 +178,8 @@ function App() {
                 </button>
               )}
 
-              <Button onClick={handleSubmitt} variant="primary" className="Primary-btn">
-                {page !== 8 ? "Next" : "Submit"}
-              </Button>
+              {renderButton()}
+              
             </div>
 
           </Form>

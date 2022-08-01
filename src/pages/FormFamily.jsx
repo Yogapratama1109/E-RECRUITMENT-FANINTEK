@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Button from 'react-bootstrap/Button'
-import AddRemoveFamily from '../add-remove-input/AddRemoveFamily'
+import AddRemoveFamily from '../helpers/AddRemoveFamily'
 
 function FormFamily() {
 
